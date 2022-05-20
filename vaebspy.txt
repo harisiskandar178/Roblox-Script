@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/harisprofanny/d/main/rspy%20work.txt"))()
