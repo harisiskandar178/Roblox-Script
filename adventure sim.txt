@@ -1,0 +1,480 @@
+if game.PlaceId == 5932564241 then
+local Player = game:GetService('Players').LocalPlayer
+Player.Idled:connect(function()
+	game:GetService('VirtualUser'):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+	wait(1)
+	game:GetService('VirtualUser'):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+end)
+if game.CoreGui:FindFirstChild("library") then
+	game.CoreGui:FindFirstChild("library"):Destroy()
+	getgenv().sword = false
+	getgenv().sell = false
+	getgenv().collect = false
+	getgenv().buy = false
+	getgenv().boss = false
+end
+local library = Instance.new("ScreenGui")
+local topframe = Instance.new("Frame")
+local backgroundframe = Instance.new("Frame")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+----put here local button
+local button1 = Instance.new("TextButton")
+local button2 = Instance.new("TextButton")
+local button3 = Instance.new("TextButton")
+local button4 = Instance.new("TextButton")
+local button5 = Instance.new("TextButton")
+local button6 = Instance.new("TextButton")
+
+---end
+local UIGridLayout = Instance.new("UIGridLayout")
+local playerframe = Instance.new("Frame")
+local speedbox = Instance.new("TextBox")
+local jumppowerbox = Instance.new("TextBox")
+local speed = Instance.new("TextButton")
+local jumppower = Instance.new("TextButton")
+local menuframe = Instance.new("Frame")
+local scriptframebutton = Instance.new("TextButton")
+local playerbutton = Instance.new("TextButton")
+local title = Instance.new("TextLabel")
+local minimize = Instance.new("TextButton")
+local close = Instance.new("TextButton")
+
+library.Name = "library"
+library.Parent = game.CoreGui
+library.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+topframe.Name = "topframe"
+topframe.Parent = library
+topframe.Active = true
+topframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+topframe.Position = UDim2.new(0.080862537, 0, 0.200000003, 0)
+topframe.Size = UDim2.new(0, 300, 0, 30)
+
+backgroundframe.Name = "background frame"
+backgroundframe.Parent = topframe
+backgroundframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+backgroundframe.Position = UDim2.new(0, 0, 1, 0)
+backgroundframe.Size = UDim2.new(0, 300, 0, 200)
+
+ScrollingFrame.Parent = backgroundframe
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScrollingFrame.Position = UDim2.new(0.266666681, 0, 0, 0)
+ScrollingFrame.Size = UDim2.new(0, 220, 0, 200)
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 1, 20)
+ScrollingFrame.ScrollBarThickness = 5
+
+
+---make new button dont put same name
+button1.Name = "button1"
+button1.Parent = ScrollingFrame
+button1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button1.Size = UDim2.new(0, 200, 0, 50)
+button1.Font = Enum.Font.GothamBold
+button1.Text = "Sword X"
+button1.TextColor3 = Color3.fromRGB(0, 0, 0)
+button1.TextSize = 13.000
+button1.MouseButton1Click:Connect(function()
+	if button1.Text == "Sword X" then
+	    button1.Text = "Sword ✓"
+	    getgenv().sword = true
+while getgenv().sword do
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChildOfClass('Tool'))
+local A_1 =  {
+	["Action"] = "Attack"
+}
+local Event = game:GetService("ReplicatedStorage").Remotes.Events.Weapon
+Event:FireServer(A_1)
+end
+	    else
+	        if button1.Text == "Sword ✓" then
+	            button1.Text = "Sword X"
+	        getgenv().sword = false
+	end
+end
+end)
+
+button2.Name = "button2"
+button2.Parent = ScrollingFrame
+button2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button2.Size = UDim2.new(0, 200, 0, 50)
+button2.Font = Enum.Font.GothamBold
+button2.Text = "Sell X"
+button2.TextColor3 = Color3.fromRGB(0, 0, 0)
+button2.TextSize = 13.000
+button2.MouseButton1Click:Connect(function()
+	if button2.Text == "Sell X" then
+	    button2.Text = "Sell ✓"
+	    getgenv().sell = true
+while getgenv().sell do
+wait()
+local A_1 = 
+{
+	["Action"] = "Sell", 
+	["Request"] = "Sell"
+}
+local Event = game:GetService("ReplicatedStorage").Remotes.Events.Shop
+Event:FireServer(A_1)
+end
+	    else
+	        if button2.Text == "Sell ✓" then
+	            button2.Text = "Sell X"
+	            getgenv().sell = false
+	end
+end
+end)
+
+
+button3.Name = "button3"
+button3.Parent = ScrollingFrame
+button3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button3.Size = UDim2.new(0, 200, 0, 50)
+button3.Font = Enum.Font.GothamBold
+button3.Text = "Buy X"
+button3.TextColor3 = Color3.fromRGB(0, 0, 0)
+button3.TextSize = 13.000
+button3.Visible = true
+button3.MouseButton1Click:Connect(function()
+	if button3.Text == "Buy X" then
+	    button3.Text = "Buy ✓"
+	    getgenv().buy = true
+while getgenv().buy do
+wait(1)
+local A_1 = 
+{
+	["Action"] = "Buy All", 
+	["Category"] = "Weapons"
+}
+local Event = game:GetService("ReplicatedStorage").Remotes.Events.Shop
+Event:FireServer(A_1)
+local A_1 = 
+{
+	["Action"] = "Buy All", 
+	["Category"] = "Genetics"
+}
+local Event = game:GetService("ReplicatedStorage").Remotes.Events.Shop
+Event:FireServer(A_1)
+local A_1 = 
+{
+	["Action"] = "Buy All", 
+	["Category"] = "Double Jumps"
+}
+local Event = game:GetService("ReplicatedStorage").Remotes.Events.Skill
+Event:FireServer(A_1)
+local A_1 = 
+{
+	["Action"] = "Buy All", 
+	["Category"] = "Boss Hits"
+}
+local Event = game:GetService("ReplicatedStorage").Remotes.Events.Skill
+Event:FireServer(A_1)
+end
+	    else
+	        if button3.Text == "Buy ✓" then
+	            button3.Text = "Buy X"
+	            getgenv().buy = false
+	        end
+	end
+end)
+
+button4.Name = "button4"
+
+button4.Parent = ScrollingFrame
+
+button4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button4.Size = UDim2.new(0, 200, 0, 50)
+button4.Font = Enum.Font.GothamBold
+button4.Text = "Coin X"
+button4.TextColor3 = Color3.fromRGB(0, 0, 0)
+button4.TextSize = 13.000
+button4.MouseButton1Click:Connect(function()
+	if button4.Text == "Coin X" then
+	    button4.Text = "Coin ✓"
+	    getgenv().collect = true
+while getgenv().collect do
+wait()
+for i,v in pairs(game:GetService("Workspace").Client.Worlds.Overworld.Collectables.Projectiles:GetDescendants()) do
+if v.Name == "Part" or v.Name == "Core" then
+v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end
+end
+end
+	    else
+	        if button4.Text == "Coin ✓" then
+	            button4.Text = "Coin X"
+	            getgenv().collect = false
+	        end
+	end
+end)
+
+button5.Name = "button5"
+button5.Parent = ScrollingFrame
+button5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button5.Size = UDim2.new(0, 200, 0, 50)
+button5.Font = Enum.Font.GothamBold
+button5.Text = "Unlock All Portal"
+button5.TextColor3 = Color3.fromRGB(0, 0, 0)
+button5.TextSize = 13.000
+button5.MouseButton1Click:Connect(function()
+	local oldposition = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+wait(0.5)
+plr.CFrame = CFrame.new(9.0741539, 901.82843, 11.6240978, -0.434346884, -3.08430579e-08, 0.90074569, -4.86680207e-08, 1, 1.07735794e-08, -0.90074569, -3.91580386e-08, -0.434346884)
+wait(0.5)
+plr.CFrame = CFrame.new(9.467206, 1902.0282, 10.3574095, 0.978650749, 7.25200663e-11, 0.205530316, -3.36456196e-09, 1, 1.56678155e-08, -0.205530316, -1.60248383e-08, 0.978650749)
+wait(0.5)
+plr.CFrame = CFrame.new(5.79413652, 3301.82788, 10.4492798, 0.932515264, -3.56518086e-08, 0.361130565, 5.54307427e-08, 1, -4.44111059e-08, -0.361130565, 6.14317699e-08, 0.932515264)
+wait(0.5)
+plr.CFrame = CFrame.new(-6.35711861, 5803.32666, 0.260148883, -0.880688012, 6.0480879e-08, 0.473696738, 5.75976813e-08, 1, -2.05939585e-08, -0.473696738, 9.14698184e-09, -0.880688012)
+wait(0.5)
+plr.CFrame = oldposition
+end)
+
+button6.Name = "button6"
+
+button6.Parent = ScrollingFrame
+
+button6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button6.Size = UDim2.new(0, 200, 0, 50)
+button6.Font = Enum.Font.GothamBold
+button6.Text = "Boss X"
+button6.TextColor3 = Color3.fromRGB(0, 0, 0)
+button6.TextSize = 13.000
+button6.MouseButton1Click:Connect(function()
+	if button6.Text == "Boss X" then
+	    button6.Text = "Boss ✓"
+	    local you = game.Players.LocalPlayer
+getgenv().boss = true
+while getgenv().boss do
+wait()
+if game:GetService("Workspace").Client.Worlds.Overworld.Boss["Earth's Guardian"] ~= nil then
+				you.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Client.Worlds.Overworld.Boss["Earth's Guardian"].Head.CFrame
+				for i,v in pairs(you.Backpack:GetChildren()) do
+if v.ClassName == "Tool" then
+you.Character.Humanoid:EquipTool(v)
+end
+end
+				local A_1 = 
+{
+	["Action"] = "Attack"
+}
+local Event = game:GetService("ReplicatedStorage").Remotes.Events.Weapon
+Event:FireServer(A_1)
+			end
+end
+	    else
+	        if button6.Text == "Boss ✓" then
+	            button6.Text = "Boss X"
+	            getgenv().boss = false
+	        end
+	end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---end
+UIGridLayout.Parent = ScrollingFrame
+UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout.CellSize = UDim2.new(0, 180, 0, 30)
+
+playerframe.Name = "playerframe"
+playerframe.Parent = backgroundframe
+playerframe.BackgroundColor3 = Color3.fromRGB(208, 208, 208)
+playerframe.Position = UDim2.new(0.266666681, 0, 0, 0)
+playerframe.Size = UDim2.new(0, 220, 0, 200)
+playerframe.Visible = false
+
+speedbox.Name = "speedbox"
+speedbox.Parent = playerframe
+speedbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+speedbox.Position = UDim2.new(0.0818181857, 0, 0.0250000004, 0)
+speedbox.Size = UDim2.new(0, 80, 0, 60)
+speedbox.Font = Enum.Font.GothamBold
+speedbox.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+speedbox.Text = ""
+speedbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+speedbox.TextScaled = true
+speedbox.TextSize = 14.000
+speedbox.TextWrapped = true
+
+jumppowerbox.Name = "jumppowerbox"
+jumppowerbox.Parent = playerframe
+jumppowerbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+jumppowerbox.Position = UDim2.new(0.545454502, 0, 0.0250000004, 0)
+jumppowerbox.Size = UDim2.new(0, 80, 0, 60)
+jumppowerbox.Font = Enum.Font.GothamBold
+jumppowerbox.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+jumppowerbox.Text = ""
+jumppowerbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+jumppowerbox.TextScaled = true
+jumppowerbox.TextSize = 14.000
+jumppowerbox.TextWrapped = true
+
+speed.Name = "speed"
+speed.Parent = playerframe
+speed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+speed.Position = UDim2.new(0.0818181783, 0, 0.354999989, 0)
+speed.Size = UDim2.new(0, 80, 0, 50)
+speed.Font = Enum.Font.GothamBold
+speed.Text = "speed"
+speed.TextColor3 = Color3.fromRGB(0, 0, 0)
+speed.TextScaled = true
+speed.TextSize = 14.000
+speed.TextWrapped = true
+speed.MouseButton1Click:Connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speedbox.Text
+end)
+
+jumppower.Name = "jumppower"
+jumppower.Parent = playerframe
+jumppower.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+jumppower.Position = UDim2.new(0.545454562, 0, 0.375, 0)
+jumppower.Size = UDim2.new(0, 80, 0, 50)
+jumppower.Font = Enum.Font.GothamBold
+jumppower.Text = "jump    power"
+jumppower.TextColor3 = Color3.fromRGB(0, 0, 0)
+jumppower.TextScaled = true
+jumppower.TextSize = 14.000
+jumppower.TextWrapped = true
+jumppower.MouseButton1Click:Connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = jumppowerbox.Text
+end)
+
+menuframe.Name = "menu frame"
+menuframe.Parent = backgroundframe
+menuframe.BackgroundColor3 = Color3.fromRGB(255, 170, 0)
+menuframe.Size = UDim2.new(0, 80, 0, 200)
+
+scriptframebutton.Name = "scriptframebutton"
+scriptframebutton.Parent = menuframe
+scriptframebutton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+scriptframebutton.Position = UDim2.new(0, 0, 0.0250000004, 0)
+scriptframebutton.Size = UDim2.new(0, 80, 0, 30)
+scriptframebutton.Font = Enum.Font.GothamBold
+scriptframebutton.Text = "Main"
+scriptframebutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+scriptframebutton.TextScaled = true
+scriptframebutton.TextSize = 14.000
+scriptframebutton.TextWrapped = true
+scriptframebutton.MouseButton1Click:Connect(function()
+	ScrollingFrame.Visible = true
+	playerframe.Visible = false
+end)
+
+playerbutton.Name = "playerbutton"
+playerbutton.Parent = menuframe
+playerbutton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+playerbutton.Position = UDim2.new(0, 0, 0.205000013, 0)
+playerbutton.Size = UDim2.new(0, 80, 0, 30)
+playerbutton.Font = Enum.Font.GothamBold
+playerbutton.Text = "player setting"
+playerbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+playerbutton.TextScaled = true
+playerbutton.TextSize = 14.000
+playerbutton.TextWrapped = true
+playerbutton.MouseButton1Click:Connect(function()
+	playerframe.Visible = true
+	ScrollingFrame.Visible = false
+end)
+
+title.Name = "title"
+title.Parent = topframe
+title.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+title.Size = UDim2.new(0, 220, 0, 30)
+title.Font = Enum.Font.GothamBold
+title.Text = "Adventure Simulator"
+title.TextColor3 = Color3.fromRGB(0, 0, 0)
+title.TextSize = 14.000
+
+minimize.Name = "minimize"
+minimize.Parent = topframe
+minimize.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+minimize.Position = UDim2.new(0.733333349, 0, 0, 0)
+minimize.Size = UDim2.new(0, 40, 0, 30)
+minimize.Font = Enum.Font.SourceSans
+minimize.Text = "-"
+minimize.TextColor3 = Color3.fromRGB(0, 0, 0)
+minimize.TextSize = 40.000
+minimize.TextWrapped = true
+minimize.MouseButton1Click:Connect(function()
+	if backgroundframe.Visible == true then
+		backgroundframe.Visible = false
+	else
+		if backgroundframe.Visible == false then
+			backgroundframe.Visible = true
+		end
+	end
+end)
+
+close.Name = "close"
+close.Parent = topframe
+close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+close.Position = UDim2.new(0.866666675, 0, 0, 0)
+close.Size = UDim2.new(0, 40, 0, 30)
+close.Font = Enum.Font.SourceSans
+close.Text = "X"
+close.TextColor3 = Color3.fromRGB(0, 0, 0)
+close.TextScaled = true
+close.TextSize = 14.000
+close.TextWrapped = true
+close.MouseButton1Click:Connect(function()
+	game.CoreGui:FindFirstChild("library"):Destroy()
+	getgenv().sword = false
+	getgenv().sell = false
+	getgenv().collect = false
+	getgenv().buy = false
+	getgenv().boss = false
+end)
+
+---draggable version 2
+local function FQIK_fake_script() -- frame.LocalScript 
+	local script = Instance.new('LocalScript', topframe)
+local UserInputService,gui,dragging,dragInput,dragStart,startPos = game:GetService("UserInputService"),script.Parent
+
+local function update(input)
+    local delta = input.Position - dragStart
+    gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = gui.Position
+     
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+gui.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+end
+coroutine.wrap(FQIK_fake_script)()
+end
