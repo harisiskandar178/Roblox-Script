@@ -1,119 +1,57 @@
 if game.CoreGui:FindFirstChild("CoreGui") then
 game.CoreGui:FindFirstChild("CoreGui"):Destroy()
 end
-
-
-
 -- FrontEnd // UI
-
-
-
 -- Objects
-
-
-
 local RemoteSpy = Instance.new("ScreenGui")
-
 local BG = Instance.new("Frame")
-
 local Ribbon = Instance.new("ImageLabel")
-
 local Hide = Instance.new("TextButton")
-
 local Title = Instance.new("TextLabel")
-
 local Remotes = Instance.new("ScrollingFrame")
-
+local UIListLayout = Instance.new("UIListLayout")
 local Source = Instance.new("ScrollingFrame")
-
-local ButtonsFrame = Instance.new("Frame")
-
+local ButtonsFrame = Instance.new("ScrollingFrame")
 local ToClipboard = Instance.new("TextButton")
-
 local Decompile = Instance.new("TextButton")
-
 local GetReturn = Instance.new("TextButton")
-
 local ClearList = Instance.new("TextButton")
-
 local CryptStrings = Instance.new("TextButton")
-
 local EnableSpy = Instance.new("TextButton")
-
 local Last = Instance.new("TextLabel")
-
 local Total = Instance.new("TextLabel")
-
 local Settings = Instance.new("TextButton")
-
 local SetRemotes = Instance.new("ScrollingFrame")
-
 local Storage = Instance.new("Frame")
-
 local RBTN = Instance.new("TextButton")
-
 local Icon = Instance.new("ImageLabel")
-
 local RemoteName = Instance.new("TextLabel")
-
 local ID = Instance.new("TextLabel")
-
 local SBTN = Instance.new("TextButton")
-
 local Icon_2 = Instance.new("ImageLabel")
-
 local RemoteName_2 = Instance.new("TextLabel")
-
 local ID_2 = Instance.new("TextLabel")
-
 local ScriptLine = Instance.new("Frame")
-
 local Line = Instance.new("TextLabel")
-
 local SourceText = Instance.new("TextLabel")
-
 local Tokens = Instance.new("TextLabel")
-
 local Strings = Instance.new("TextLabel")
-
 local Comments = Instance.new("TextLabel")
-
 local Keywords = Instance.new("TextLabel")
-
 local Globals = Instance.new("TextLabel")
-
 local RemoteHighlight = Instance.new("TextLabel")
-
 local Enabled = Instance.new("TextLabel")
-
 local FullScreen = Instance.new("TextButton")
-
 local SetRemotesTab = Instance.new("Frame")
-
 local FilterF = Instance.new("TextButton")
-
 local FilterE = Instance.new("TextButton")
-
 local Search = Instance.new("TextBox")
-
 local remotes_fired = 0
-
 local encrypt_string = false
-
 local spy_enabled = true
-
-
-
 local lua_keywords = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while"}
-
 local global_env = {"game", "workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16", "Vector3int16"}
-
-
-
 -- Properties
-
-
-
 RemoteSpy.Name = "CoreGui"
 
 RemoteSpy.Parent = game.CoreGui
@@ -142,7 +80,7 @@ Ribbon.Name = "Ribbon"
 
 Ribbon.Parent = BG
 
-Ribbon.BackgroundColor3 = Color3.new(0.760784, 0.0117647, 0.317647)
+Ribbon.BackgroundColor3 = Color3.new(0.976471, 0.839216, 0.180392)
 
 Ribbon.BorderSizePixel = 0
 
@@ -156,7 +94,7 @@ Hide.Name = "Hide"
 
 Hide.Parent = Ribbon
 
-Hide.BackgroundColor3 = Color3.new(1, 0, 0)
+Hide.BackgroundColor3 = Color3.new(0.0666667, 0.0666667, 0.0666667)
 
 Hide.BorderSizePixel = 0
 
@@ -182,7 +120,7 @@ Title.Name = "Title"
 
 Title.Parent = Ribbon
 
-Title.BackgroundColor3 = Color3.new(1, 0.0117647, 0.423529)
+Title.BackgroundColor3 = Color3.new(0.0666667, 0.0666667, 0.0666667)
 
 Title.BorderSizePixel = 0
 
@@ -196,7 +134,7 @@ Title.Font = Enum.Font.SourceSansBold
 
 Title.FontSize = Enum.FontSize.Size14
 
-Title.Text = "Remote2Script v1"
+Title.Text = "RemoteSpy"
 
 Title.TextColor3 = Color3.new(1, 1, 1)
 
@@ -214,7 +152,7 @@ Remotes.BorderColor3 = Color3.new(0.243137, 0.243137, 0.243137)
 
 Remotes.Position = UDim2.new(0, 10, 0, 80)
 
-Remotes.CanvasSize = UDim2.new(0, 0, 40, 0)
+Remotes.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
 Remotes.Size = UDim2.new(0, 250, 1, -90)
 
@@ -228,7 +166,10 @@ Remotes.ScrollBarThickness = 5
 
 Remotes.TopImage = "rbxassetid://148970562"
 
-
+UIListLayout.Name = "Ui"
+UIListLayout.Parent = Remotes
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.Padding = UDim.new(0, 8)
 
 Source.Name = "Source"
 
@@ -257,20 +198,18 @@ Source.TopImage = "rbxassetid://148970562"
 
 
 ButtonsFrame.Name = "ButtonsFrame"
-
 ButtonsFrame.Parent = BG
-
 ButtonsFrame.BackgroundColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
-
 ButtonsFrame.BorderColor3 = Color3.new(0.243137, 0.243137, 0.243137)
-
 ButtonsFrame.Position = UDim2.new(0, 10, 0, 30)
-
 ButtonsFrame.Size = UDim2.new(1, -20, 0, 40)
-
 ButtonsFrame.ZIndex = 2
-
 ButtonsFrame.ClipsDescendants = true
+ButtonsFrame.CanvasSize = UDim2.new(2, 0, 0, 0)
+ButtonsFrame.ScrollBarThickness = 5
+ButtonsFrame.BottomImage = "rbxassetid://148970562"
+ButtonsFrame.TopImage = "rbxassetid://148970562"
+ButtonsFrame.MidImage = "rbxassetid://148970562"
 
 
 
@@ -1016,7 +955,7 @@ FullScreen.Name = "FullScreen"
 
 FullScreen.Parent = Ribbon
 
-FullScreen.BackgroundColor3 = Color3.new(1, 0, 0)
+FullScreen.BackgroundColor3 = Color3.new(0.0666667, 0.0666667, 0.0666667)
 
 FullScreen.BorderSizePixel = 0
 
@@ -1967,7 +1906,7 @@ mwr()
 
 local namecall_script = function(object, method, ...)
 
-	local script = "-- Script generated by R2Sv2\n-- R2Sv2 developed by Luckyxero\n\32\n"
+	local script = ""
 
 	local args = {}
 
