@@ -1,0 +1,72 @@
+---F9 SCRIPT MADE USING DEX EXPLORER
+if game.CoreGui:FindFirstChild("ScreenGui") then
+game.CoreGui:FindFirstChild("ScreenGui"):Destroy()
+end
+
+local gui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local btn = Instance.new("TextButton")
+gui.Name = "ScreenGui"
+gui.Parent = game:GetService("CoreGui")
+
+
+frame.Name = "frame"
+frame.Parent = gui
+frame.Active = true
+frame.Selectable = true
+frame.Size = UDim2.new(0,130,0,130)
+frame.Position = UDim2.new(0,525,0,-1)
+frame.BackgroundColor3 = Color3.new(0,0,0)
+
+
+btn.Name = "btn"
+btn.Parent = frame
+btn.Size = UDim2.new(0,70,0,70)
+btn.BackgroundColor3 = Color3.new(500,500,500)
+btn.Position = UDim2.new(0,30,0,30)
+btn.Text = "F9"
+btn.TextColor3 = Color3.new(0,0,0)
+btn.TextScaled = true
+btn.MouseButton1Click:Connect(function()
+    local vim = game:service("VirtualInputManager")
+           vim:SendKeyEvent(true, "F9", false, game)
+end)
+
+
+---draggable version 2
+local function FQIK_fake_script() -- frame.LocalScript 
+	local script = Instance.new('LocalScript', frame)
+local UserInputService,gui,dragging,dragInput,dragStart,startPos = game:GetService("UserInputService"),script.Parent
+
+local function update(input)
+    local delta = input.Position - dragStart
+    gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = gui.Position
+     
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+gui.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+end
+coroutine.wrap(FQIK_fake_script)()
