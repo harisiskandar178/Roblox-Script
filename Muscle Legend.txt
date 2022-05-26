@@ -54,9 +54,6 @@ local button18 = Instance.new("TextButton")
 local button19 = Instance.new("TextButton")
 
 
-plr.Character:WaitForChild("Humanoid").WalkSpeed = 13
-
-
 ---end
 local UIGridLayout = Instance.new("UIGridLayout")
 local playerframe = Instance.new("Frame")
@@ -1080,6 +1077,7 @@ button19.Text = "Treadmill ✅"
 getgenv().treadmill = true
 while getgenv().treadmill do
 wait(0.1)
+plr.Character:WaitForChild("Humanoid").WalkSpeed = 13
 plr.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(223.790634, 8.19207478, 221.244965, 0.271959662, -3.77772764e-08, -0.962308645, -1.1013805e-08, 1, -4.23695532e-08, 0.962308645, 2.21214886e-08, 0.271959662)
 local vim = game:service("VirtualInputManager")
            vim:SendKeyEvent(true, "W", false, game)
@@ -1094,6 +1092,7 @@ button19.Text = "Treadmill ❎"
 getgenv().treadmill = false
 while getgenv().treadmill do
 wait(0.1)
+plr.Character:WaitForChild("Humanoid").WalkSpeed = 13
 plr.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(223.790634, 8.19207478, 221.244965, 0.271959662, -3.77772764e-08, -0.962308645, -1.1013805e-08, 1, -4.23695532e-08, 0.962308645, 2.21214886e-08, 0.271959662)
 local vim = game:service("VirtualInputManager")
            vim:SendKeyEvent(true, "W", false, game)
