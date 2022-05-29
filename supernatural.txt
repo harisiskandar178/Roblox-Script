@@ -1,0 +1,139 @@
+if game.PlaceId == 6273865312 then
+local Player = game:GetService('Players').LocalPlayer
+Player.Idled:connect(function()
+	game:GetService('VirtualUser'):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+	wait(1)
+	game:GetService('VirtualUser'):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+end)
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local button1 = Instance.new("TextButton")
+--Properties:
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.141752586, 0, 0.472266257, 0)
+Frame.Size = UDim2.new(0, 170, 0, 130)
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Size = UDim2.new(0, 170, 0, 20)
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Text = "SuperNatural Simulator"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+button1.Name = "button1"
+button1.Parent = Frame
+button1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button1.Position = UDim2.new(0.146764696, 0, 0.298846155, 0)
+button1.Size = UDim2.new(0, 120, 0, 70)
+button1.Font = Enum.Font.SourceSans
+button1.Text = "Active X"
+button1.TextColor3 = Color3.fromRGB(0, 0, 0)
+button1.TextScaled = true
+button1.TextSize = 14.000
+button1.TextWrapped = true
+button1.MouseButton1Click:Connect(function()
+	if button1.Text == "Active X" then
+	    button1.Text = "Active ✓"
+	    getgenv().Train = true
+while getgenv().Train do
+wait()
+local A_1 = 
+{
+	[1] = "GainMuscle"
+}
+local Event = game:GetService("ReplicatedStorage").RemoteEvent
+Event:FireServer(A_1)
+local A_1 = 
+{
+	[1] = "SellMuscle"
+}
+local Event = game:GetService("ReplicatedStorage").RemoteEvent
+Event:FireServer(A_1)
+end
+	    else
+	        if button1.Text == "Active ✓" then
+	            button1.Text = "Active X"
+	            getgenv().Train = false
+	        end
+	end
+end)
+-- Scripts:
+local function LMQESFW_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+	function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
+	
+	counter = 0
+	
+	while wait()do
+		script.Parent.BackgroundColor3 = Color3.fromHSV(zigzag(counter),1,1)
+	
+		counter = counter + 0.01
+	end
+end
+coroutine.wrap(LMQESFW_fake_script)()
+local function XAYA_fake_script() -- TextLabel.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel)
+	function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
+	
+	counter = 0
+	
+	while wait()do
+		script.Parent.BackgroundColor3 = Color3.fromHSV(zigzag(counter),1,1)
+	
+		counter = counter + 0.01
+	end
+end
+coroutine.wrap(XAYA_fake_script)()
+local function GFNVNC_fake_script() -- button1.LocalScript 
+	local script = Instance.new('LocalScript', button1)
+	function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
+	
+	counter = 0
+	
+	while wait()do
+		script.Parent.BackgroundColor3 = Color3.fromHSV(zigzag(counter),1,1)
+	
+		counter = counter + 0.01
+	end
+end
+coroutine.wrap(GFNVNC_fake_script)()
+---draggable version 2
+local function FQIK_fake_script() -- frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+local UserInputService,gui,dragging,dragInput,dragStart,startPos = game:GetService("UserInputService"),script.Parent
+local function update(input)
+    local delta = input.Position - dragStart
+    gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+gui.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = gui.Position
+     
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+gui.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+end
+coroutine.wrap(FQIK_fake_script)()
+end
