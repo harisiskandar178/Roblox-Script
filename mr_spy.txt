@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/harisprofanny/harisprofanny/main/%5BRERELEASE%5D%20REMOTE%20SPY%20SCRIPT%20(1).txt"))()
