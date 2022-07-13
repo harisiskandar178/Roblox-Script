@@ -1,0 +1,194 @@
+if game.CoreGui:FindFirstChild("position gui") then
+
+	game.CoreGui:FindFirstChild("position gui"):Destroy()
+
+end
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+
+	Title = "Position Gui";
+
+	Text = "Loaded";
+
+	Duration = 5;
+
+})
+
+local positiongui = Instance.new("ScreenGui")
+
+local mainframe = Instance.new("Frame")
+
+local positionbox = Instance.new("TextLabel")
+
+local generatebutton = Instance.new("TextButton")
+
+local copybutton = Instance.new("TextButton")
+
+
+
+positiongui.Name = "position gui"
+
+positiongui.Parent = game.CoreGui
+
+positiongui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+
+
+mainframe.Name = "mainframe"
+
+mainframe.Parent = positiongui
+
+mainframe.Active = true
+
+mainframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+
+mainframe.BorderSizePixel = 0
+
+mainframe.Position = UDim2.new(0.0559895784, 0, 0.272340417, 0)
+
+mainframe.Size = UDim2.new(0, 260, 0, 180)
+
+
+
+positionbox.Name = "positionbox"
+
+positionbox.Parent = mainframe
+
+positionbox.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+
+positionbox.BorderSizePixel = 0
+
+positionbox.Position = UDim2.new(0.115384616, 0, 0.0933333263, 0)
+
+positionbox.Size = UDim2.new(0, 200, 0, 100)
+
+positionbox.Font = Enum.Font.SourceSans
+
+positionbox.Text = "Hi!!!"
+
+positionbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+
+positionbox.TextSize = 15.000
+
+positionbox.TextWrapped = true
+
+positionbox.TextXAlignment = Enum.TextXAlignment.Left
+
+positionbox.TextYAlignment = Enum.TextYAlignment.Top
+
+
+
+generatebutton.Name = "generatebutton"
+
+generatebutton.Parent = mainframe
+
+generatebutton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+
+generatebutton.BorderSizePixel = 0
+
+generatebutton.Position = UDim2.new(0.115384616, 0, 0.722222209, 0)
+
+generatebutton.Size = UDim2.new(0, 80, 0, 40)
+
+generatebutton.Font = Enum.Font.GothamBold
+
+generatebutton.Text = "generate   position"
+
+generatebutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+
+generatebutton.TextSize = 14.000
+
+generatebutton.TextWrapped = true
+
+
+
+copybutton.Name = "copybutton"
+
+copybutton.Parent = mainframe
+
+copybutton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+
+copybutton.BorderSizePixel = 0
+
+copybutton.Position = UDim2.new(0.576153815, 0, 0.722222209, 0)
+
+copybutton.Size = UDim2.new(0, 80, 0, 40)
+
+copybutton.Font = Enum.Font.GothamBold
+
+copybutton.Text = "copy   position"
+
+copybutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+
+copybutton.TextSize = 14.000
+
+copybutton.TextWrapped = true
+
+copybutton.MouseButton1Click:Connect(function()
+
+	setclipboard(positionbox.Text)
+
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+
+		Title = "Position";
+
+		Text = "Copied!";
+
+		Duration = 2;
+
+	})
+
+end)
+
+
+
+
+
+---draggable version 2
+local function FQIK_fake_script() -- frame.LocalScript 
+	local script = Instance.new('LocalScript', BG)
+local UserInputService,gui,dragging,dragInput,dragStart,startPos = game:GetService("UserInputService"),script.Parent
+local function update(input)
+    local delta = input.Position - dragStart
+    gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+gui.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = gui.Position
+     
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+gui.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+end
+coroutine.wrap(FQIK_fake_script)()
+local function WTJNX_fake_script() -- generatebutton.LocalScript 
+
+	local script = Instance.new('LocalScript', generatebutton)
+
+
+
+	script.Parent.MouseButton1Click:Connect(function()
+
+		script.Parent.Parent.positionbox.Text = tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+
+	end)
+
+end
+
+coroutine.wrap(WTJNX_fake_script)()
