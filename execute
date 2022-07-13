@@ -1,0 +1,365 @@
+_G.Main = {}
+function _G.Main:Window()
+
+    local robloxexecutor = Instance.new("ScreenGui")
+    local main = Instance.new("Frame")
+    local tabframe = Instance.new("Frame")
+    local title = Instance.new("TextLabel")
+    local tablist = Instance.new("UIListLayout")
+    local executetab = Instance.new("TextButton")
+    local scripttab = Instance.new("TextButton")
+    local sstab = Instance.new("TextButton")
+    local executorframe = Instance.new("Frame")
+    local executorbox = Instance.new("TextBox")
+    local executebutton = Instance.new("TextButton")
+    local clearexecute = Instance.new("TextButton")
+    local ssframe = Instance.new("Frame")
+    local ssbox = Instance.new("TextBox")
+    local executess = Instance.new("TextButton")
+    local clearss = Instance.new("TextButton")
+    local scriptframe = Instance.new("ScrollingFrame")
+    local UIListLayout = Instance.new("UIListLayout")
+    local searchscript = Instance.new("TextBox")
+    for i,v in pairs(game.CoreGui:GetChildren()) do
+if v.Name == "roblox executor" then
+v:Destroy()
+end
+end
+    
+    robloxexecutor.Name = "roblox executor"
+    robloxexecutor.Parent = game.CoreGui
+    robloxexecutor.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    main.Name = "main"
+    main.Parent = robloxexecutor
+    main.Active = true
+    main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    main.BorderSizePixel = 0
+    main.Position = UDim2.new(0.0914948359, 0, 0.208530784, 0)
+    main.Size = UDim2.new(0, 398, 0, 236)
+    
+    tabframe.Name = "tab frame"
+    tabframe.Parent = main
+    tabframe.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+    tabframe.BorderSizePixel = 0
+    tabframe.Size = UDim2.new(0, 73, 0, 236)
+    
+    title.Name = "title"
+    title.Parent = tabframe
+    title.BackgroundColor3 = Color3.fromRGB(162, 162, 162)
+    title.BorderSizePixel = 0
+    title.Size = UDim2.new(0, 73, 0, 35)
+    title.Font = Enum.Font.GothamBold
+    title.Text = "Roblox Executor"
+    title.TextColor3 = Color3.fromRGB(0, 0, 0)
+    title.TextSize = 13.000
+    title.TextWrapped = true
+    
+    tablist.Name = "tab list"
+    tablist.Parent = tabframe
+    tablist.SortOrder = Enum.SortOrder.LayoutOrder
+    tablist.Padding = UDim.new(0, 10)
+    
+    executetab.Name = "execute tab"
+    executetab.Parent = tabframe
+    executetab.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    executetab.BorderSizePixel = 0
+    executetab.Position = UDim2.new(0, 0, 0.148305088, 0)
+    executetab.Size = UDim2.new(0, 73, 0, 27)
+    executetab.Font = Enum.Font.GothamBold
+    executetab.Text = "Excutor"
+    executetab.TextColor3 = Color3.fromRGB(0, 0, 0)
+    executetab.TextSize = 12.000
+    executetab.TextWrapped = true
+    
+    scripttab.Name = "script tab"
+    scripttab.Parent = tabframe
+    scripttab.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    scripttab.BorderSizePixel = 0
+    scripttab.Position = UDim2.new(0, 0, 0.148305088, 0)
+    scripttab.Size = UDim2.new(0, 73, 0, 27)
+    scripttab.Font = Enum.Font.GothamBold
+    scripttab.Text = "Script"
+    scripttab.TextColor3 = Color3.fromRGB(0, 0, 0)
+    scripttab.TextSize = 12.000
+    scripttab.TextWrapped = true
+    
+    sstab.Name = "ss tab"
+    sstab.Parent = tabframe
+    sstab.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    sstab.BorderSizePixel = 0
+    sstab.Position = UDim2.new(0, 0, 0.148305088, 0)
+    sstab.Size = UDim2.new(0, 73, 0, 27)
+    sstab.Font = Enum.Font.GothamBold
+    sstab.Text = "ServerSide"
+    sstab.TextColor3 = Color3.fromRGB(0, 0, 0)
+    sstab.TextSize = 12.000
+    sstab.TextWrapped = true
+    
+    executorframe.Name = "executor frame"
+    executorframe.Parent = main
+    executorframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    executorframe.BorderSizePixel = 0
+    executorframe.Position = UDim2.new(0.183417082, 0, 0, 0)
+    executorframe.Size = UDim2.new(0, 325, 0, 236)
+    
+    executorbox.Name = "executor box"
+    executorbox.Parent = executorframe
+    executorbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    executorbox.BorderSizePixel = 0
+    executorbox.Position = UDim2.new(0.107692309, 0, 0.0932203382, 0)
+    executorbox.Size = UDim2.new(0, 254, 0, 124)
+    executorbox.ClearTextOnFocus = false
+    executorbox.Font = Enum.Font.SourceSansSemibold
+    executorbox.MultiLine = true
+    executorbox.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+    executorbox.PlaceholderText = "print(\"Roblox Executor\")"
+    executorbox.Text = ""
+    executorbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+    executorbox.TextSize = 20.000
+    executorbox.TextWrapped = true
+    executorbox.TextXAlignment = Enum.TextXAlignment.Left
+    executorbox.TextYAlignment = Enum.TextYAlignment.Top
+    
+    executebutton.Name = "execute button"
+    executebutton.Parent = executorframe
+    executebutton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+    executebutton.BorderSizePixel = 0
+    executebutton.Position = UDim2.new(0.107692309, 0, 0.741525471, 0)
+    executebutton.Size = UDim2.new(0, 97, 0, 33)
+    executebutton.Font = Enum.Font.GothamBold
+    executebutton.Text = "Execute"
+    executebutton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    executebutton.TextSize = 25.000
+    executebutton.TextWrapped = true
+    executebutton.MouseButton1Click:Connect(function()
+loadstring(executorbox.Text)()
+end)
+
+
+    clearexecute.Name = "clear execute"
+    clearexecute.Parent = executorframe
+    clearexecute.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+    clearexecute.BorderSizePixel = 0
+    clearexecute.Position = UDim2.new(0.590769231, 0, 0.741525471, 0)
+    clearexecute.Size = UDim2.new(0, 97, 0, 33)
+    clearexecute.Font = Enum.Font.GothamBold
+    clearexecute.Text = "Clear"
+    clearexecute.TextColor3 = Color3.fromRGB(255, 255, 255)
+    clearexecute.TextSize = 25.000
+    clearexecute.TextWrapped = true
+    clearexecute.MouseButton1Click:Connect(function()
+executorbox.Text = ""
+end)
+
+
+    ssframe.Name = "ss frame"
+    ssframe.Parent = main
+    ssframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    ssframe.BorderSizePixel = 0
+    ssframe.Position = UDim2.new(0.183417082, 0, 0, 0)
+    ssframe.Size = UDim2.new(0, 325, 0, 236)
+    ssframe.Visible = false
+    
+    ssbox.Name = "ss box"
+    ssbox.Parent = ssframe
+    ssbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ssbox.BorderSizePixel = 0
+    ssbox.Position = UDim2.new(0.107692309, 0, 0.0932203382, 0)
+    ssbox.Size = UDim2.new(0, 254, 0, 124)
+    ssbox.ClearTextOnFocus = false
+    ssbox.Font = Enum.Font.SourceSansSemibold
+    ssbox.MultiLine = true
+    ssbox.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+    ssbox.PlaceholderText = "require(\"Roblox Executor\")"
+    ssbox.Text = ""
+    ssbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+    ssbox.TextSize = 20.000
+    ssbox.TextWrapped = true
+    ssbox.TextXAlignment = Enum.TextXAlignment.Left
+    ssbox.TextYAlignment = Enum.TextYAlignment.Top
+    
+    executess.Name = "execute ss"
+    executess.Parent = ssframe
+    executess.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+    executess.BorderSizePixel = 0
+    executess.Position = UDim2.new(0.107692309, 0, 0.741525471, 0)
+    executess.Size = UDim2.new(0, 97, 0, 33)
+    executess.Font = Enum.Font.GothamBold
+    executess.Text = "Execute"
+    executess.TextColor3 = Color3.fromRGB(255, 255, 255)
+    executess.TextSize = 25.000
+    executess.TextWrapped = true
+    executess.MouseButton1Click:Connect(function()
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer(ssbox.Text)
+        end)
+    
+    clearss.Name = "clear ss"
+    clearss.Parent = ssframe
+    clearss.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+    clearss.BorderSizePixel = 0
+    clearss.Position = UDim2.new(0.590769231, 0, 0.741525471, 0)
+    clearss.Size = UDim2.new(0, 97, 0, 33)
+    clearss.Font = Enum.Font.GothamBold
+    clearss.Text = "Clear"
+    clearss.TextColor3 = Color3.fromRGB(255, 255, 255)
+    clearss.TextSize = 25.000
+    clearss.TextWrapped = true
+    clearss.MouseButton1Click:Connect(function()
+ssbox.Text = ""
+end)
+
+
+    scriptframe.Name = "script frame"
+    scriptframe.Parent = main
+    scriptframe.Active = true
+    scriptframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    scriptframe.BorderSizePixel = 0
+    scriptframe.Position = UDim2.new(0.183417082, 0, 0.148305088, 0)
+    scriptframe.Size = UDim2.new(0, 325, 0, 201)
+    scriptframe.Visible = false
+    scriptframe.CanvasSize = UDim2.new(0, 0, 0, 0)
+    scriptframe.ScrollBarThickness = 5
+    scriptframe.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    
+    UIListLayout.Parent = scriptframe
+    UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.Padding = UDim.new(0, 10)
+    
+    searchscript.Name = "search script"
+    searchscript.Parent = main
+    searchscript.BackgroundColor3 = Color3.fromRGB(167, 167, 167)
+    searchscript.BorderSizePixel = 0
+    searchscript.Position = UDim2.new(0.183417082, 0, 0, 0)
+    searchscript.Size = UDim2.new(0, 325, 0, 35)
+    searchscript.Visible = false
+    searchscript.Font = Enum.Font.GothamBold
+    searchscript.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+    searchscript.PlaceholderText = "--search"
+    searchscript.Text = ""
+    searchscript.TextColor3 = Color3.fromRGB(0, 0, 0)
+    searchscript.TextSize = 17.000
+    searchscript.TextWrapped = true
+    
+    -- Scripts:
+    
+    local function AOVN_fake_script() -- executetab.LocalScript 
+        local script = Instance.new('LocalScript', executetab)
+    
+        script.Parent.MouseButton1Click:Connect(function()
+            script.Parent.Parent.Parent["executor frame"].Visible = true
+            script.Parent.Parent.Parent["ss frame"].Visible = false
+            script.Parent.Parent.Parent["script frame"].Visible = false
+            script.Parent.Parent.Parent["search script"].Visible = false
+        end)
+    end
+    coroutine.wrap(AOVN_fake_script)()
+    local function TKTYS_fake_script() -- scripttab.LocalScript 
+        local script = Instance.new('LocalScript', scripttab)
+    
+        script.Parent.MouseButton1Click:Connect(function()
+            script.Parent.Parent.Parent["executor frame"].Visible = false
+            script.Parent.Parent.Parent["ss frame"].Visible = false
+            script.Parent.Parent.Parent["script frame"].Visible = true
+            script.Parent.Parent.Parent["search script"].Visible = true
+        end)
+    end
+    coroutine.wrap(TKTYS_fake_script)()
+    local function RISPF_fake_script() -- sstab.LocalScript 
+        local script = Instance.new('LocalScript', sstab)
+    
+        script.Parent.MouseButton1Click:Connect(function()
+            script.Parent.Parent.Parent["executor frame"].Visible = false
+            script.Parent.Parent.Parent["ss frame"].Visible = true
+            script.Parent.Parent.Parent["script frame"].Visible = false
+            script.Parent.Parent.Parent["search script"].Visible = false
+        end)
+    end
+    coroutine.wrap(RISPF_fake_script)()
+    local function MGKIIYT_fake_script() -- scriptframe.LocalScript 
+        local script = Instance.new('LocalScript', scriptframe)
+    
+        local scroll = script.Parent.Parent["script frame"]
+        local boxsearch = script.Parent.Parent["search script"]
+        
+        boxsearch.Changed:Connect(function()
+            local text = boxsearch.Text:lower()
+            if text ~= "" then
+                local buttons = scroll:GetDescendants()
+                for i,v in pairs(buttons) do
+                    if v:IsA("TextButton") then
+                        local buttontext = v.Text:lower()
+                        if string.find(buttontext, text) then
+                            v.Visible = true
+                        else
+                            v.Visible = false
+                        end
+                    end
+                end
+            else
+                local buttons = scroll:GetDescendants()
+                for i,v in pairs(buttons) do
+                    if v:IsA("TextButton") then
+                            v.Visible = true
+                        end
+                    end
+            end
+        end)
+    end
+    coroutine.wrap(MGKIIYT_fake_script)()
+    local function YUGGCRR_fake_script() -- main.LocalScript 
+        local script = Instance.new('LocalScript', main)
+    
+        local UserInputService,gui,dragging,dragInput,dragStart,startPos = game:GetService("UserInputService"),script.Parent
+        local function update(input)
+            local delta = input.Position - dragStart
+            gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+        gui.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = true
+                dragStart = input.Position
+                startPos = gui.Position
+        
+                input.Changed:Connect(function()
+                    if input.UserInputState == Enum.UserInputState.End then
+                        dragging = false
+                    end
+                end)
+            end
+        end)
+        gui.InputChanged:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+                dragInput = input
+            end
+        end)
+        UserInputService.InputChanged:Connect(function(input)
+            if input == dragInput and dragging then
+                update(input)
+            end
+        end)
+    end
+    coroutine.wrap(YUGGCRR_fake_script)()
+
+    _G.Frame = {}
+    function _G.Frame:Button(Name,Call)
+        local scriptbutton = Instance.new("TextButton")
+
+        scriptbutton.Name = "script button"
+    scriptbutton.Parent = scriptframe
+    scriptbutton.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+    scriptbutton.BorderSizePixel = 0
+    scriptbutton.Position = UDim2.new(0.204615384, 0, 0, 0)
+    scriptbutton.Size = UDim2.new(0, 250, 0, 50)
+    scriptbutton.Font = Enum.Font.GothamBold
+    scriptbutton.Text = Name
+    scriptbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    scriptbutton.TextSize = 16.000
+    scriptbutton.TextWrapped = true scriptbutton.MouseButton1Click:Connect(function()
+        pcall(Call)
+    end)
+    end
+    return _G.Frame
+end
+return _G.Main
