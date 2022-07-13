@@ -1728,116 +1728,36 @@ newButton(
 )
 
 
--- Scripts:
-
-
-
-local function DBJU_fake_script() -- main.LocalScript 
-
+---draggable version 2
+local function FQIK_fake_script() -- frame.LocalScript 
 	local script = Instance.new('LocalScript', main)
-
-
-
-	-- Draggble
-
-	-- Credits: Veky
-
-	
-
-	local UserInputService = game:GetService("UserInputService")
-
-	
-
-	local gui = script.Parent
-
-	
-
-	local dragging
-
-	local dragInput
-
-	local dragStart
-
-	local startPos
-
-	
-
-	local function update(input)
-
-		local delta = input.Position - dragStart
-
-		gui.Position = gui:TweenPosition(UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y), 'Out', 'Linear', 0, true); -- drag speed
-
-	end
-
-	
-
-	gui.InputBegan:Connect(function(input)
-
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-
-			dragging = true
-
-			dragStart = input.Position
-
-			startPos = gui.Position
-
-	
-
-			input.Changed:Connect(function()
-
-				if input.UserInputState == Enum.UserInputState.End then
-
-					dragging = false
-
-				end
-
-			end)
-
-		end
-
-	end)
-
-	
-
-	gui.InputChanged:Connect(function(input)
-
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-
-			dragInput = input
-
-		end
-
-	end)
-
-	
-
-	UserInputService.InputChanged:Connect(function(input)
-
-		if input == dragInput and dragging then
-
-			update(input)
-
-		end
-
-	end)
-
+local UserInputService,gui,dragging,dragInput,dragStart,startPos = game:GetService("UserInputService"),script.Parent
+local function update(input)
+    local delta = input.Position - dragStart
+    gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 end
-
-coroutine.wrap(DBJU_fake_script)()
-
-local function WTJNX_fake_script() -- generatebutton.LocalScript 
-
-	local script = Instance.new('LocalScript', generatebutton)
-
-
-
-	script.Parent.MouseButton1Click:Connect(function()
-
-		script.Parent.Parent.positionbox.Text = tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
-
-	end)
-
+gui.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = gui.Position
+     
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+gui.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
 end
-
-coroutine.wrap(WTJNX_fake_script)()
+coroutine.wrap(FQIK_fake_script)()
